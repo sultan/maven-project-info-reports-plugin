@@ -1,3 +1,5 @@
+package org.apache.maven.report.projectinfo.stubs;
+
 /*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
@@ -17,9 +19,12 @@
  * under the License.
  */
 
-File mainDependencies = new File( basedir, 'main/target/site/dependencies.html' )
-
-// Dependency File Details section should display dep-1.0-SNAPSHOT.jar packaged from previous build (package phase),
-// not dep/target/classes from current build (site phase)
-assert !mainDependencies.text.contains( '<td align="left">dep/target/classes</td>' )
-assert mainDependencies.text.contains( '<td align="left">dep-1.0-SNAPSHOT.jar</td>' )
+public class MailingListsInvalidLinkStub
+    extends ProjectInfoProjectStub
+{
+    @Override
+    protected String getPOM()
+    {
+        return "mailing-lists-plugin-config-invalidlink.xml";
+    }
+}
